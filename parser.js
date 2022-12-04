@@ -2,7 +2,7 @@ const fs = require('fs');
 const JSZip = require("jszip");
 const sax = require('sax');
 
-async function extractTextFromPPTX(filepath) {
+async function extractTextFromPPTX(filepath, _mode="text") {
   let pptxFileBuffer = ''
   try {
     pptxFileBuffer = fs.readFileSync(filepath);
@@ -11,7 +11,7 @@ async function extractTextFromPPTX(filepath) {
     return ''
   }
   const slideXMLArray = await getSlideXML(pptxFileBuffer);
-  const text = await parseSlideXML(slideXMLArray);
+  const text = await parseSlideXML(slideXMLArray, _mode=_mode);
   return text;
 }
 
@@ -32,25 +32,43 @@ async function getSlideXML(fileBuffer) {
 }
 
 // use sax to parse the XML data
-async function parseSlideXML(slideXMLArray) {
+async function parseSlideXML(slideXMLArray, _mode="text") {
   let text = "";
+  let json = {};
+
   for (let i = 0; i < slideXMLArray.length; i++) {
-    text += "\n--------" + "\nSlide " + i + "\n";
     const slideXML = slideXMLArray[i];
     const parser = sax.parser(true);
+    const slideNum = "Slide " + i;
+    let slideText = "";
+
+    if (_mode === "text") {
+      slideText += "\n---\n" + slideNum + "\n";
+    } else if (_mode === "json") {
+      json[slideNum] = ''
+    }
+    
     parser.onopentag = (node) => {
       if (node.name === "a:p") {
-        text += "\n";
+        slideText += "\n";
       }
     };
+    
     parser.ontext = function (t) {
       if (t.trim()) {
-        text += t;
+        slideText += t;
       }
     };
+
     parser.write(slideXML.toString()).close();
+    text += slideText;
+    json[slideNum] = slideText.trim();
   }
-  return text
+  if (_mode === "text") {
+    return text
+  } else if (_mode === "json") {
+    return json
+  }
 }
 
 module.exports = extractTextFromPPTX;
