@@ -1,0 +1,16 @@
+{
+  "name": "pptx-text-parser",
+  "version": "0.1",
+  "description": "Extract text from PPTX files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["parser", "pptx", "text"],
+  "author": "Gurjot Sidhu <contact@thatgurjot.com> (https://thatgurjot.com)",
+  "license": "MIT",
+  "dependencies": {
+    "jszip": "^3.10.1",
+    "sax": "github:isaacs/sax-js"
+  }
+}
