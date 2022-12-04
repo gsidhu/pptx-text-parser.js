@@ -1,13 +1,14 @@
 {
   "name": "pptx-text-parser",
-  "version": "0.1",
-  "description": "Extract text from PPTX files.",
+  "version": "1.0.0",
+  "description": "Extract text from PPTX files as string or JSON.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["parser", "pptx", "text"],
-  "author": "Gurjot Sidhu <contact@thatgurjot.com> (https://thatgurjot.com)",
+  "keywords": ["parser", "pptx", "text", "extract", "json"],
+  "author": "Gurjot Sidhu <npm@thatgurjot.com> (https://thatgurjot.com)",
+  "homepage": "https://github.com/gsidhu/pptx-text-parser.js",
   "license": "MIT",
   "dependencies": {
     "jszip": "^3.10.1",

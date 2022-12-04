@@ -3,7 +3,7 @@ A minimal, pure JavaScript parser for pptx files. It will extract all the text f
 
 ## Installation
 ```bash
-npm install https://github.com/gsidhu/pptx-text-parser.js
+npm i pptx-text-parser
 ```
 
 ### Dependencies
@@ -39,9 +39,9 @@ pptxTextParser.parse('path/to/pptx/file.pptx', _mode="json")
 ```
 
 ## Testing
-Note: The contents of the `sample.pptx` file were generated using OpenAI's [ChatGPT](https://chat.openai.com/chat).
+Note: The contents of the [`sample.pptx`](https://github.com/gsidhu/pptx-text-parser.js/blob/main/sample.pptx) file were generated using OpenAI's [ChatGPT](https://chat.openai.com/chat).
 
-You can test the module on the [`sample.pptx`](./sample.pptx) file like so:
+You can test the module on the `sample.pptx` file like so:
 ```javascript
 let sampleFilepath = "./sample.pptx";
 parse(sampleFilepath, _mode="text").then((result) => {
