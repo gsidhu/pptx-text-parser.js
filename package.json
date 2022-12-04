@@ -1,6 +1,6 @@
 {
   "name": "pptx-text-parser",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Extract text from PPTX files as string or JSON.",
   "main": "index.js",
   "scripts": {
