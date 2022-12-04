@@ -1,13 +1,13 @@
 const extractTextFromPPTX = require('./parser.js');
 
 async function parse(filepath) {
-  let text = ''
-  text = extractTextFromPPTX(filepath).then((text) => {
-    console.log(text);
-    return text;
-  });
+  const text = await extractTextFromPPTX(filepath);
+  return text;
 }
 
 // test
 let sampleFilepath = "./sample.pptx";
-parse(sampleFilepath);
+
+parse(sampleFilepath).then((text) => {
+  console.log(text);
+});

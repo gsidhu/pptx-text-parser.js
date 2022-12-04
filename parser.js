@@ -10,17 +10,14 @@ async function extractTextFromPPTX(filepath) {
     console.log(err);
     return ''
   }
-  let slideXMLArray = [];
-  getSlideXML(pptxFileBuffer, slideXMLArray).then((slideXMLArray) => {
-    parseSlideXML(slideXMLArray).then((text) => {
-      // console.log(text)
-      return text
-    });
-  });
+  const slideXMLArray = await getSlideXML(pptxFileBuffer);
+  const text = await parseSlideXML(slideXMLArray);
+  return text;
 }
 
 // use JSZip to extract XML data from the pptx file buffer
-async function getSlideXML(fileBuffer, slideXMLArray) {
+async function getSlideXML(fileBuffer) {
+  let slideXMLArray = [];
   const zip = await new JSZip().loadAsync(fileBuffer);
   // filter out the slide XML files
   const slideFiles = Object.keys(zip.files).filter((filename) =>
