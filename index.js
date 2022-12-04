@@ -77,10 +77,4 @@ async function parse(filepath, _mode="text") {
   return text;
 }
 
-// test
-let sampleFilepath = "./sample.pptx";
-parse(sampleFilepath, _mode="text").then((result) => {
-  console.log(result);
-});
-
 module.exports = parse;

@@ -16,12 +16,13 @@ To extract the text as a string, use:
 ```javascript
 const pptxTextParser = require('pptx-text-parser');
 
-pptxTextParser.parse('path/to/pptx/file.pptx', _mode="text")
+pptxTextParser('path/to/pptx/file.pptx', _mode="text")
   .then((text) => {
-    console.log(text);
-  })
-  .catch((err) => {
+    console.log(text)
+    return true;
+  }) .catch((err) => {
     console.log(err);
+    return false;
   });
 ```
 
@@ -29,7 +30,7 @@ To extract the text as a JSON object, use:
 ```javascript
 const pptxTextParser = require('pptx-text-parser');
 
-pptxTextParser.parse('path/to/pptx/file.pptx', _mode="json")
+pptxTextParser('path/to/pptx/file.pptx', _mode="json")
   .then((textJSON) => {
     console.log(textJSON);
   })
