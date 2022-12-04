@@ -1,15 +1,17 @@
 # PPTX Text Parser
-<!-- Generate a description of this module -->
 This module is a simple text parser for pptx files. It will extract all the text from the slides and return it as a string.
 
 ## Installation
-<!-- Installation instructions -->
 ```bash
-npm install pptx-text-parser
+npm install https://github.com/gsidhu/pptx-text-parser.js
 ```
 
+### Dependencies
+This module requires the following dependencies:
+- [JSZip](https://github.com/Stuk/jszip/)
+- [sax](https://github.com/isaacs/sax-js)
+
 ## Usage
-<!-- Usage instructions -->
 ```javascript
 const pptxTextParser = require('pptx-text-parser');
 
